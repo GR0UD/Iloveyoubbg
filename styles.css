@@ -35,6 +35,15 @@ body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   position: relative;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text x="8" y="24" font-size="30">❤️</text></svg>')
+      12 0,
+    auto;
+}
+
+* {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text x="8" y="24" font-size="30">❤️</text></svg>')
+      12 0,
+    auto;
 }
 
 /* Animated Background */
