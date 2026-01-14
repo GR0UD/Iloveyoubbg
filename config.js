@@ -4,87 +4,138 @@
 
 const CONFIG = {
   // Your Valentine's name that will appear in the title
-  // Example: "Jade", "Sarah", "Mike"
   valentineName: "Ebru",
 
   // The title that appears in the browser tab
-  // You can use emojis! 💝 💖 💗 💓 💞 💕
   pageTitle: "Will You Be My Valentine? 💝",
 
+  // ✨ NEW: Your photos together (add to 'photos' folder)
+  photos: {
+    enabled: true,
+    folder: "photos/",
+    images: [
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+      "photo5.jpg",
+    ],
+    captions: [
+      "Our memories 💕",
+      "Together forever ❤️",
+      "I treasure every moment with you 🌹",
+      "Forever by your side 💕",
+      "You complete me ❤️",
+    ],
+  },
+
   // Floating emojis that appear in the background
-  // Find more emojis at: https://emojipedia.org
   floatingEmojis: {
-    hearts: ["❤️", "💖", "💝", "💗", "💓", "🎀"], // Heart emojis
-    bears: ["🧸", "🐻"], // Cute bear emojis
+    hearts: ["❤️", "💖", "💝", "💗", "💓", "🎀", "💕", "💞"],
+    bears: ["🧸", "🐻"],
+    sparkles: ["✨", "⭐", "🌟", "💫"],
+    flowers: ["🌹", "🌸", "🌺", "🌷", "💐"],
   },
 
   // Questions and answers
-  // Customize each question and its possible responses
   questions: {
     first: {
-      text: "Do you like me?", // First interaction
-      yesBtn: "Yes", // Text for "Yes" button
-      noBtn: "No", // Text for "No" button
-      secretAnswer: "I don't like you, I love you! ❤️", // Secret hover message
+      text: "Do you like me?",
+      yesBtn: "Yes",
+      noBtn: "No",
+      secretAnswer: "I don't like you, I love you! ❤️",
     },
     second: {
-      text: "How much do you love me?", // For the love meter
-      startText: "This much!", // Text before the percentage
-      nextBtn: "Next ❤️", // Text for the next button
+      text: "How much do you love me?",
+      startText: "This much!",
+      nextBtn: "Next ❤️",
     },
     third: {
-      text: "Will you be my Valentine my askim, my gorgeous beautiful sexy girl 🌹", // The big question!
-      yesBtn: "Yes!", // Text for "Yes" button
-      noBtn: "No", // Text for "No" button
+      text: "Will you be my Valentine my askim, my gorgeous beautiful sexy girl 🌹",
+      yesBtn: "Yes! 💕",
+      noBtn: "No",
     },
   },
 
   // Love meter messages
-  // They show up depending on how far they slide the meter
   loveMessages: {
-    extreme: "WOOOOW You love me that much?? 🥰🚀💝", // Shows when they go past 5000%
-    high: "To infinity and beyond! 🚀💝", // Shows when they go past 1000%
-    normal: "And beyond! 🥰", // Shows when they go past 100%
+    extreme: "WOOOOW You love me that much?? 🥰🚀💝",
+    high: "To infinity and beyond! 🚀💝",
+    normal: "And beyond! 🥰",
   },
 
   // Messages that appear after they say "Yes!"
   celebration: {
-    title: "Yay! I'm the luckiest guy in the world! 🎉💝💖💝💓",
+    title: "Yay! I'm the luckiest guy in the world! 🎉💝",
     message: "Now come get your gift, a big warm hug and a huge kiss!",
-    emojis: "🎁💖🤗💝💋❤️💕", // These will bounce around
+    emojis: "🎁💖🤗💝🎀❤️💕",
+    // ✨ NEW: Personal love letter that types out
+    loveLetter:
+      "Every moment with you is a gift. You make my heart skip a beat, my soul sing, and my world complete. I love you more than words could ever express... 💕",
   },
 
-  // Color scheme for the website
-  // Use https://colorhunt.co or https://coolors.co to find beautiful color combinations
+  // Color scheme
   colors: {
-    backgroundStart: "#ffafbd", // Gradient start (try pastel colors for a soft look)
-    backgroundEnd: "#ffc3a0", // Gradient end (should complement backgroundStart)
-    buttonBackground: "#ff6b6b", // Button color (should stand out against the background)
-    buttonHover: "#ff8787", // Button hover color (slightly lighter than buttonBackground)
-    textColor: "#ff4757", // Text color (make sure it's readable!)
+    backgroundStart: "#ff9a9e",
+    backgroundEnd: "#fecfef",
+    backgroundAccent: "#fdfbfb",
+    buttonBackground: "#ff6b6b",
+    buttonHover: "#ff8787",
+    buttonGlow: "rgba(255, 107, 107, 0.5)",
+    textColor: "#ff4757",
+    accentColor: "#f093fb",
+    sparkleColor: "#ffd700",
   },
 
   // Animation settings
-  // Adjust these if you want faster/slower animations
   animations: {
-    floatDuration: "15s", // How long it takes hearts to float up (10-20s recommended)
-    floatDistance: "50px", // How far hearts move sideways (30-70px recommended)
-    bounceSpeed: "0.5s", // Speed of bouncing animations (0.3-0.7s recommended)
-    heartExplosionSize: 1.5, // Size of heart explosion effect (1.2-2.0 recommended)
+    floatDuration: "15s",
+    floatDistance: "50px",
+    bounceSpeed: "0.5s",
+    heartExplosionSize: 1.5,
+    cursorTrailEnabled: true,
+    parallaxEnabled: true,
+    typewriterSpeed: 50,
+    sparkleIntensity: 30,
+    confettiCount: 150,
   },
 
-  // Background Music (Optional)
-  // Add your own music URL after getting proper licenses
+  // 🎵 Background Music - NOW SUPPORTS LOCAL FILES!
   music: {
-    enabled: true, // Music feature is enabled
-    autoplay: true, // Try to autoplay (note: some browsers may block this)
-    musicUrl:
-      "https://res.cloudinary.com/dncywqfpb/video/upload/v1738399057/music_qrhjvy.mp3", // Music streaming URL
-    startText: "🎵 Play Music", // Button text to start music
-    stopText: "🔇 Stop Music", // Button text to stop music
-    volume: 0.5, // Volume level (0.0 to 1.0)
+    enabled: true,
+    autoplay: true,
+
+    // ✨ Use a local file - put your mp3 in the 'music' folder!
+    useLocalFile: true,
+    localFileName: "song.mp3",
+
+    startText: "🎵 Play Our Song",
+    stopText: "🔇 Pause Music",
+    volume: 0.5,
+
+    // Music visualizer bars
+    visualizerEnabled: true,
+    visualizerColor: "#ff6b6b",
+  },
+
+  // ✨ Special effects
+  effects: {
+    cursorTrail: {
+      enabled: true,
+      emoji: "💕",
+      fadeSpeed: 1000,
+    },
+    sparkles: {
+      enabled: true,
+      count: 30,
+    },
+    petals: {
+      enabled: true,
+      count: 15,
+    },
+    screenShake: true,
+    glowText: true,
   },
 };
 
-// Don't modify anything below this line unless you know what you're doing
 window.VALENTINE_CONFIG = CONFIG;

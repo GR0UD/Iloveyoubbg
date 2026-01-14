@@ -1,4 +1,4 @@
-# 💝 Valentine's Day Website 2026 💝
+# 💝 Valentine's Day Website 2026 - UPGRADED Edition! 💝
 
 [![Stars](https://img.shields.io/github/stars/End2EndAI/valentine-website-2025?style=social)](https://github.com/End2EndAI/valentine-website-2025/stargazers)
 [![Fork](https://img.shields.io/github/forks/End2EndAI/valentine-website-2025?style=social)](https://github.com/End2EndAI/valentine-website-2025/fork)
@@ -7,11 +7,38 @@
 
 A beautiful, interactive Valentine's Day website generator to ask your special someone to be your Valentine! Create your own personalized version in minutes. Perfect for Valentine's Day 2025! 💝
 
+## ✨ NEW UPGRADE FEATURES ✨
+
+### 🎵 Local Music Support
+
+Just drop your MP3 in the `music/` folder - no more streaming URLs needed!
+
+### 🌟 Stunning Visual Effects
+
+- Animated gradient background
+- Glass-morphism design with blur
+- Sparkle particles floating everywhere
+- Falling rose petals
+- Cursor heart trail (hearts follow your mouse!)
+- Confetti explosion on celebration
+- Music visualizer bars
+
+### 📸 Photo Gallery
+
+Add your couple photos to share memories together!
+
+### 💌 Typewriter Love Letter
+
+Your personal message types out romantically in the celebration!
+
+---
+
 🌟 **[Live Demo](https://end2endai.github.io/valentine-website-2025)** | 🚀 **[Quick Start](#-quick-start-guide)** | 🌐 **[Deploy Your Website](#4-make-it-live-get-your-online-website-url)**
 
 ## 🌟 Share The Love
 
 Help others find this project:
+
 - 🔥 Follow on instagram for more websites or share other ideas : [Instagram](https://www.instagram.com/ai_cute_apps/)
 - ⭐ Star this repository if you like it
 - 🔄 Fork it to create your own version
@@ -23,6 +50,7 @@ Help others find this project:
 Ready-to-use messages for sharing:
 
 **Twitter/X**
+
 ```
 💝 Create your own Valentine's website for free! No coding required!
 🎁 Fully customizable, easy to deploy with your own website name
@@ -31,6 +59,7 @@ Ready-to-use messages for sharing:
 ```
 
 **Instagram/Facebook**
+
 ```
 💝 Make Valentine's Day 2025 unforgettable!
 Create your own interactive Valentine's website in minutes - completely FREE!
@@ -43,6 +72,7 @@ Try it now: https://github.com/End2EndAI/valentine-website-2025
 ```
 
 **Reddit (r/webdev, r/coding)**
+
 ```
 [Project] 💝 Valentine's Website Generator - Free & Open Source
 
@@ -59,6 +89,7 @@ GitHub: https://github.com/End2EndAI/valentine-website-2025
 ```
 
 ## ✨ Features
+
 - 💖 Floating hearts and bears
 - 🎯 Interactive questions
 - 📏 Love meter that goes beyond 100%
@@ -69,6 +100,7 @@ GitHub: https://github.com/End2EndAI/valentine-website-2025
 ## 🚀 Quick Start Guide
 
 ### 1. Get Your Own Copy
+
 1. Click the "Fork" button at the top right of this page
 2. Wait a few seconds while GitHub creates your copy
 3. You now have your own version of the code!
@@ -78,12 +110,14 @@ Note: Make sure you're logged into your GitHub account. If you don't have one, y
 ### 2. Customize for Your Valentine
 
 #### Easy Way (Recommended)
+
 1. In your new repository, click on `config.js`
 2. Click the pencil icon (✏️) to edit
 3. Change the values to personalize your website
 4. Click "Commit changes" at the bottom
 
 Here's what you can customize in `config.js`:
+
 ```javascript
 // Basic Information
 valentineName: "Jade"                    // Your Valentine's name
@@ -162,9 +196,11 @@ music: {
 Want to make it extra special with your own romantic song? Follow these steps to add background music:
 
 1. **Get a Cloudinary Account (Free):**
+
    - Go to [Cloudinary.com](https://cloudinary.com) and sign up for a free account
 
 2. **Upload Your Music:**
+
    - Log in to your Cloudinary dashboard
    - Click on the "Upload" button in the top right
    - Select "Upload" from the dropdown menu
@@ -172,6 +208,7 @@ Want to make it extra special with your own romantic song? Follow these steps to
    - Wait for the upload to complete
 
 3. **Get Your Music URL:**
+
    - After upload, find your music file in the Media Library
    - Click the "..." (more options) button on your music file
    - Click "Copy URL"
@@ -197,6 +234,7 @@ music: {
 ### 4. Make It Live! (Get your online website URL)
 
 #### Using GitHub Pages (Free)
+
 1. Go to your repository's "Settings"
 2. Click "Pages" in the left sidebar
 3. Under "Source", select "main" branch
@@ -205,6 +243,7 @@ music: {
 6. Your site will be live at: `https://your-username.github.io/repository-name`
 
 #### Using Netlify (Free, Recommended, Custom URL)
+
 1. Go to [Netlify](https://www.netlify.com/)
 2. Sign up for a free account
 3. Click "Add new site" → "Import an existing project"
@@ -214,31 +253,39 @@ music: {
 7. Choose a custom domain (e.g., `my-valentine-2025.netlify.app`)
 
 ## 💡 Tips
+
 - Test the website before sending it to your Valentine
 - Try all the buttons and interactions
 - Check how it looks on mobile phones
 - Keep the secret message subtle (bottom-right corner)
 
 ## 🎨 Want Different Colors?
+
 Use these tools to find beautiful colors:
+
 - [Coolors](https://coolors.co/) - Color palette generator
 - [ColorHunt](https://colorhunt.co/) - Color palettes
 
 ## 🔍 Need More Emojis?
+
 Find more emojis at:
+
 - [EmojiKeyboard](https://emojikeyboard.top/fr/)
 - [Emojipedia](https://emojipedia.org/)
 
 ## 🤝 Need Help?
+
 - Create an issue in this repository
 - Check existing issues for solutions
 - Contact me through GitHub
 
 ## 💖 Credits
+
 Created with love for Valentine's Day 2025.
 Feel free to use and modify for your special someone!
 
 \- Louis Fontaine -
 
 ## 📜 License
-MIT License - Feel free to use this for your Valentine! 
+
+MIT License - Feel free to use this for your Valentine!

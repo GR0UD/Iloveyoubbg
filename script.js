@@ -1,242 +1,568 @@
-// Initialize configuration
+// ============================================
+// 💝 UPGRADED VALENTINE'S WEBSITE SCRIPT 💝
+// ============================================
+
 const config = window.VALENTINE_CONFIG;
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.title = config.pageTitle;
+
+window.addEventListener("DOMContentLoaded", () => {
+  validateConfig();
+  initializeContent();
+  createFloatingElements();
+  createSparkles();
+  createPetals();
+  setupCursorTrail();
+  setupMusicPlayer();
+  setInitialPosition();
+});
 
 // Validate configuration
 function validateConfig() {
-    const warnings = [];
+  if (!config.valentineName) {
+    config.valentineName = "My Love";
+  }
 
-    // Check required fields
-    if (!config.valentineName) {
-        warnings.push("Valentine's name is not set! Using default.");
-        config.valentineName = "My Love";
-    }
+  // Ensure all color values exist
+  const defaultColors = {
+    backgroundStart: "#ff9a9e",
+    backgroundEnd: "#fecfef",
+    backgroundAccent: "#fdfbfb",
+    buttonBackground: "#ff6b6b",
+    buttonHover: "#ff8787",
+    buttonGlow: "rgba(255, 107, 107, 0.5)",
+    textColor: "#ff4757",
+    accentColor: "#f093fb",
+    sparkleColor: "#ffd700",
+  };
 
-    // Validate colors
-    const isValidHex = (hex) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(hex);
-    Object.entries(config.colors).forEach(([key, value]) => {
-        if (!isValidHex(value)) {
-            warnings.push(`Invalid color for ${key}! Using default.`);
-            config.colors[key] = getDefaultColor(key);
-        }
-    });
-
-    // Validate animation values
-    if (parseFloat(config.animations.floatDuration) < 5) {
-        warnings.push("Float duration too short! Setting to 5s minimum.");
-        config.animations.floatDuration = "5s";
-    }
-
-    if (config.animations.heartExplosionSize < 1 || config.animations.heartExplosionSize > 3) {
-        warnings.push("Heart explosion size should be between 1 and 3! Using default.");
-        config.animations.heartExplosionSize = 1.5;
-    }
-
-    // Log warnings if any
-    if (warnings.length > 0) {
-        console.warn("⚠️ Configuration Warnings:");
-        warnings.forEach(warning => console.warn("- " + warning));
-    }
+  config.colors = { ...defaultColors, ...config.colors };
 }
 
-// Default color values
-function getDefaultColor(key) {
-    const defaults = {
-        backgroundStart: "#ffafbd",
-        backgroundEnd: "#ffc3a0",
-        buttonBackground: "#ff6b6b",
-        buttonHover: "#ff8787",
-        textColor: "#ff4757"
-    };
-    return defaults[key];
+// Initialize page content
+function initializeContent() {
+  // Set main title
+  document.getElementById(
+    "valentineTitle"
+  ).textContent = `${config.valentineName}, my love...`;
+
+  // Set first question
+  document.getElementById("question1Text").textContent =
+    config.questions.first.text;
+  document.getElementById("yesBtn1").textContent =
+    config.questions.first.yesBtn;
+  document.getElementById("noBtn1").textContent = config.questions.first.noBtn;
+  document.getElementById("secretAnswerBtn").textContent =
+    config.questions.first.secretAnswer;
+
+  // Set second question
+  document.getElementById("question2Text").textContent =
+    config.questions.second.text;
+  document.getElementById("startText").textContent =
+    config.questions.second.startText;
+  document.getElementById("nextBtn").textContent =
+    config.questions.second.nextBtn;
+
+  // Set third question
+  document.getElementById("question3Text").textContent =
+    config.questions.third.text;
+  document.getElementById("yesBtn3").textContent =
+    config.questions.third.yesBtn;
+  document.getElementById("noBtn3").textContent = config.questions.third.noBtn;
 }
 
-// Set page title
-document.title = config.pageTitle;
+// ============================================
+// FLOATING ELEMENTS
+// ============================================
 
-// Initialize the page content when DOM is loaded
-window.addEventListener('DOMContentLoaded', () => {
-    // Validate configuration first
-    validateConfig();
-
-    // Set texts from config
-    document.getElementById('valentineTitle').textContent = `${config.valentineName}, my love...`;
-    
-    // Set first question texts
-    document.getElementById('question1Text').textContent = config.questions.first.text;
-    document.getElementById('yesBtn1').textContent = config.questions.first.yesBtn;
-    document.getElementById('noBtn1').textContent = config.questions.first.noBtn;
-    document.getElementById('secretAnswerBtn').textContent = config.questions.first.secretAnswer;
-    
-    // Set second question texts
-    document.getElementById('question2Text').textContent = config.questions.second.text;
-    document.getElementById('startText').textContent = config.questions.second.startText;
-    document.getElementById('nextBtn').textContent = config.questions.second.nextBtn;
-    
-    // Set third question texts
-    document.getElementById('question3Text').textContent = config.questions.third.text;
-    document.getElementById('yesBtn3').textContent = config.questions.third.yesBtn;
-    document.getElementById('noBtn3').textContent = config.questions.third.noBtn;
-
-    // Create initial floating elements
-    createFloatingElements();
-
-    // Setup music player
-    setupMusicPlayer();
-});
-
-// Create floating hearts and bears
 function createFloatingElements() {
-    const container = document.querySelector('.floating-elements');
-    
-    // Create hearts
-    config.floatingEmojis.hearts.forEach(heart => {
-        const div = document.createElement('div');
-        div.className = 'heart';
-        div.innerHTML = heart;
-        setRandomPosition(div);
-        container.appendChild(div);
-    });
+  const container = document.querySelector(".floating-elements");
 
-    // Create bears
-    config.floatingEmojis.bears.forEach(bear => {
-        const div = document.createElement('div');
-        div.className = 'bear';
-        div.innerHTML = bear;
-        setRandomPosition(div);
-        container.appendChild(div);
+  // Create hearts
+  config.floatingEmojis.hearts.forEach((heart) => {
+    const div = document.createElement("div");
+    div.className = "heart";
+    div.innerHTML = heart;
+    setRandomPosition(div);
+    container.appendChild(div);
+  });
+
+  // Create bears
+  config.floatingEmojis.bears.forEach((bear) => {
+    const div = document.createElement("div");
+    div.className = "bear";
+    div.innerHTML = bear;
+    setRandomPosition(div);
+    container.appendChild(div);
+  });
+
+  // Create sparkles
+  if (config.floatingEmojis.sparkles) {
+    config.floatingEmojis.sparkles.forEach((sparkle) => {
+      const div = document.createElement("div");
+      div.className = "sparkle-emoji";
+      div.innerHTML = sparkle;
+      setRandomPosition(div);
+      container.appendChild(div);
     });
+  }
+
+  // Create flowers
+  if (config.floatingEmojis.flowers) {
+    config.floatingEmojis.flowers.forEach((flower) => {
+      const div = document.createElement("div");
+      div.className = "flower";
+      div.innerHTML = flower;
+      setRandomPosition(div);
+      container.appendChild(div);
+    });
+  }
 }
 
-// Set random position for floating elements
 function setRandomPosition(element) {
-    element.style.left = Math.random() * 100 + 'vw';
-    element.style.animationDelay = Math.random() * 5 + 's';
-    element.style.animationDuration = 10 + Math.random() * 20 + 's';
+  element.style.left = Math.random() * 100 + "vw";
+  element.style.animationDelay = Math.random() * 10 + "s";
+  element.style.animationDuration = 15 + Math.random() * 20 + "s";
 }
 
-// Function to show next question
+// ============================================
+// SPARKLE EFFECTS
+// ============================================
+
+function createSparkles() {
+  if (!config.effects?.sparkles?.enabled) return;
+
+  const container = document.querySelector(".sparkle-container");
+  const count = config.animations?.sparkleIntensity || 30;
+
+  for (let i = 0; i < count; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.animationDelay = Math.random() * 3 + "s";
+    sparkle.style.width = 5 + Math.random() * 10 + "px";
+    sparkle.style.height = sparkle.style.width;
+    container.appendChild(sparkle);
+  }
+}
+
+// ============================================
+// PETAL EFFECTS
+// ============================================
+
+function createPetals() {
+  if (!config.effects?.petals?.enabled) return;
+
+  const container = document.querySelector(".petal-container");
+  const count = config.effects.petals.count || 15;
+  const petals = ["🌸", "🌺", "🌷", "💮"];
+
+  for (let i = 0; i < count; i++) {
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.innerHTML = petals[Math.floor(Math.random() * petals.length)];
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDelay = Math.random() * 10 + "s";
+    petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+    container.appendChild(petal);
+  }
+}
+
+// ============================================
+// CURSOR TRAIL
+// ============================================
+
+function setupCursorTrail() {
+  if (!config.effects?.cursorTrail?.enabled) return;
+
+  const emoji = config.effects.cursorTrail.emoji || "💕";
+  let lastTime = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastTime < 50) return; // Throttle
+    lastTime = now;
+
+    const heart = document.createElement("div");
+    heart.className = "trail-heart";
+    heart.innerHTML = emoji;
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(
+      () => heart.remove(),
+      config.effects.cursorTrail.fadeSpeed || 1000
+    );
+  });
+}
+
+// ============================================
+// QUESTION NAVIGATION
+// ============================================
+
 function showNextQuestion(questionNumber) {
-    document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
-    document.getElementById(`question${questionNumber}`).classList.remove('hidden');
+  document
+    .querySelectorAll(".question-section")
+    .forEach((q) => q.classList.add("hidden"));
+  const nextQuestion = document.getElementById(`question${questionNumber}`);
+  nextQuestion.classList.remove("hidden");
+
+  // Add entrance animation
+  nextQuestion.style.animation = "fadeInUp 0.5s ease-out";
 }
 
-// Function to move the "No" button when clicked
 function moveButton(button) {
-    const x = Math.random() * (window.innerWidth - button.offsetWidth);
-    const y = Math.random() * (window.innerHeight - button.offsetHeight);
-    button.style.position = 'fixed';
-    button.style.left = x + 'px';
-    button.style.top = y + 'px';
+  // Show try again popup
+  const popup = document.getElementById("tryAgainPopup");
+  const slapSound = document.getElementById("slapSound");
+
+  // Play slap sound
+  slapSound.currentTime = 0;
+  slapSound.play();
+
+  // Show popup
+  popup.classList.remove("hidden");
+
+  // Hide popup after 1.5 seconds and remove the No button
+  setTimeout(() => {
+    popup.classList.add("hidden");
+    button.remove(); // Remove the No button entirely
+  }, 1500);
 }
 
-// Love meter functionality
-const loveMeter = document.getElementById('loveMeter');
-const loveValue = document.getElementById('loveValue');
-const extraLove = document.getElementById('extraLove');
+function moveButtonOld(button) {
+  // Get safe boundaries
+  const padding = 20;
+  const maxX = window.innerWidth - button.offsetWidth - padding;
+  const maxY = window.innerHeight - button.offsetHeight - padding;
+
+  const x = padding + Math.random() * maxX;
+  const y = padding + Math.random() * maxY;
+
+  button.style.position = "fixed";
+  button.style.left = x + "px";
+  button.style.top = y + "px";
+  button.style.zIndex = "1000";
+  button.style.transition = "left 0.2s, top 0.2s";
+
+  // Add wiggle effect
+  button.style.transform = "rotate(" + (Math.random() * 20 - 10) + "deg)";
+}
+
+// ============================================
+// LOVE METER
+// ============================================
+
+const loveMeter = document.getElementById("loveMeter");
+const loveValue = document.getElementById("loveValue");
+const extraLove = document.getElementById("extraLove");
 
 function setInitialPosition() {
+  if (loveMeter) {
     loveMeter.value = 100;
     loveValue.textContent = 100;
-    loveMeter.style.width = '100%';
+    loveMeter.style.width = "100%";
+  }
 }
 
-loveMeter.addEventListener('input', () => {
+if (loveMeter) {
+  loveMeter.addEventListener("input", () => {
     const value = parseInt(loveMeter.value);
-    loveValue.textContent = value;
-    
+
+    // Animate the number change
+    animateValue(loveValue, parseInt(loveValue.textContent), value, 100);
+
     if (value > 100) {
-        extraLove.classList.remove('hidden');
-        const overflowPercentage = (value - 100) / 9900;
-        const extraWidth = overflowPercentage * window.innerWidth * 0.8;
-        loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
-        loveMeter.style.transition = 'width 0.3s';
-        
-        // Show different messages based on the value
-        if (value >= 5000) {
-            extraLove.classList.add('super-love');
-            extraLove.textContent = config.loveMessages.extreme;
-        } else if (value > 1000) {
-            extraLove.classList.remove('super-love');
-            extraLove.textContent = config.loveMessages.high;
-        } else {
-            extraLove.classList.remove('super-love');
-            extraLove.textContent = config.loveMessages.normal;
-        }
+      extraLove.classList.remove("hidden");
+      const overflowPercentage = (value - 100) / 9900;
+      const extraWidth = overflowPercentage * window.innerWidth * 0.8;
+      loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
+      loveMeter.style.transition = "width 0.3s";
+
+      if (value >= 5000) {
+        extraLove.classList.add("super-love");
+        extraLove.textContent = config.loveMessages.extreme;
+        createHeartBurst(5);
+      } else if (value > 1000) {
+        extraLove.classList.remove("super-love");
+        extraLove.textContent = config.loveMessages.high;
+        createHeartBurst(3);
+      } else {
+        extraLove.classList.remove("super-love");
+        extraLove.textContent = config.loveMessages.normal;
+      }
     } else {
-        extraLove.classList.add('hidden');
-        extraLove.classList.remove('super-love');
-        loveMeter.style.width = '100%';
+      extraLove.classList.add("hidden");
+      extraLove.classList.remove("super-love");
+      loveMeter.style.width = "100%";
     }
-});
+  });
+}
 
-// Initialize love meter
-window.addEventListener('DOMContentLoaded', setInitialPosition);
-window.addEventListener('load', setInitialPosition);
+// Animate number counting
+function animateValue(element, start, end, duration) {
+  const range = end - start;
+  const startTime = performance.now();
 
-// Celebration function
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const value = Math.floor(start + range * progress);
+    element.textContent = value;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+// Mini heart burst effect
+function createHeartBurst(count) {
+  const hearts = config.floatingEmojis.hearts;
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      heart.className = "trail-heart";
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left =
+        window.innerWidth / 2 + (Math.random() - 0.5) * 200 + "px";
+      heart.style.top = window.innerHeight / 2 + "px";
+      heart.style.fontSize = "2rem";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    }, i * 100);
+  }
+}
+
+// ============================================
+// CELEBRATION
+// ============================================
+
 function celebrate() {
-    document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
-    const celebration = document.getElementById('celebration');
-    celebration.classList.remove('hidden');
-    
-    // Set celebration messages
-    document.getElementById('celebrationTitle').textContent = config.celebration.title;
-    document.getElementById('celebrationMessage').textContent = config.celebration.message;
-    document.getElementById('celebrationEmojis').textContent = config.celebration.emojis;
-    
-    // Create heart explosion effect
-    createHeartExplosion();
+  document
+    .querySelectorAll(".question-section")
+    .forEach((q) => q.classList.add("hidden"));
+  const celebration = document.getElementById("celebration");
+  celebration.classList.remove("hidden");
+
+  // Set celebration messages
+  document.getElementById("celebrationTitle").textContent =
+    config.celebration.title;
+  document.getElementById("celebrationMessage").textContent =
+    config.celebration.message;
+  document.getElementById("celebrationEmojis").textContent =
+    config.celebration.emojis;
+
+  // Show photo gallery
+  setupPhotoGallery();
+
+  // Type out love letter
+  if (config.celebration.loveLetter) {
+    typeWriter(
+      document.getElementById("loveLetter"),
+      config.celebration.loveLetter
+    );
+  }
+
+  // Effects!
+  createHeartExplosion();
+  createConfetti();
+
+  // Screen shake
+  if (config.effects?.screenShake) {
+    const container = document.querySelector(".container");
+    container.classList.add("shake");
+    setTimeout(() => container.classList.remove("shake"), 500);
+  }
 }
 
-// Create heart explosion animation
 function createHeartExplosion() {
-    for (let i = 0; i < 50; i++) {
-        const heart = document.createElement('div');
-        const randomHeart = config.floatingEmojis.hearts[Math.floor(Math.random() * config.floatingEmojis.hearts.length)];
-        heart.innerHTML = randomHeart;
-        heart.className = 'heart';
-        document.querySelector('.floating-elements').appendChild(heart);
-        setRandomPosition(heart);
-    }
+  const container = document.querySelector(".floating-elements");
+  for (let i = 0; i < 50; i++) {
+    setTimeout(() => {
+      const heart = document.createElement("div");
+      const randomHeart =
+        config.floatingEmojis.hearts[
+          Math.floor(Math.random() * config.floatingEmojis.hearts.length)
+        ];
+      heart.innerHTML = randomHeart;
+      heart.className = "heart heart-fall";
+      heart.style.fontSize = 1.5 + Math.random() * 2 + "rem";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = -10 + "vh";
+      heart.style.animationDuration = 2 + Math.random() * 1.5 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, i * 30);
+  }
 }
 
-// Music Player Setup
+function createConfetti() {
+  const container = document.getElementById("confettiContainer");
+  const colors = [
+    "#ff6b6b",
+    "#f093fb",
+    "#a855f7",
+    "#ffd700",
+    "#ff8787",
+    "#ffb8b8",
+  ];
+  const count = config.animations?.confettiCount || 150;
+
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.top = -20 + Math.random() * 100 + "vh";
+      confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = 5 + Math.random() * 10 + "px";
+      confetti.style.height = 5 + Math.random() * 10 + "px";
+      confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+      confetti.style.animationDuration = 3 + Math.random() * 2 + "s";
+      container.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 5000);
+    }, i * 20);
+  }
+}
+
+// Typewriter effect
+function typeWriter(element, text) {
+  element.textContent = "";
+  let i = 0;
+  const speed = config.animations?.typewriterSpeed || 50;
+
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  setTimeout(type, 1000); // Start after 1 second
+}
+
+// ============================================
+// MUSIC PLAYER - AUTO-PLAY ON INTERACTION
+// ============================================
+
 function setupMusicPlayer() {
-    const musicControls = document.getElementById('musicControls');
-    const musicToggle = document.getElementById('musicToggle');
-    const bgMusic = document.getElementById('bgMusic');
-    const musicSource = document.getElementById('musicSource');
+  const bgMusic = document.getElementById("bgMusic");
+  const musicSource = document.getElementById("musicSource");
 
-    // Only show controls if music is enabled in config
-    if (!config.music.enabled) {
-        musicControls.style.display = 'none';
-        return;
-    }
+  if (!config.music?.enabled) {
+    return;
+  }
 
-    // Set music source and volume
+  // Set music source - LOCAL FILE or URL
+  if (config.music.useLocalFile && config.music.localFileName) {
+    musicSource.src = `music/${config.music.localFileName}`;
+  } else {
     musicSource.src = config.music.musicUrl;
-    bgMusic.volume = config.music.volume || 0.5;
-    bgMusic.load();
+  }
 
-    // Try autoplay if enabled
-    if (config.music.autoplay) {
-        const playPromise = bgMusic.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(error => {
-                console.log("Autoplay prevented by browser");
-                musicToggle.textContent = config.music.startText;
-            });
-        }
-    }
+  bgMusic.volume = config.music.volume || 0.5;
+  bgMusic.load();
 
-    // Toggle music on button click
-    musicToggle.addEventListener('click', () => {
-        if (bgMusic.paused) {
-            bgMusic.play();
-            musicToggle.textContent = config.music.stopText;
-        } else {
-            bgMusic.pause();
-            musicToggle.textContent = config.music.startText;
-        }
+  // Try autoplay
+  const tryPlay = () => {
+    bgMusic.play().catch(() => {
+      // If autoplay fails, play on first user interaction
+      document.addEventListener(
+        "click",
+        () => {
+          bgMusic.play();
+        },
+        { once: true }
+      );
     });
-} 
+  };
+
+  if (config.music.autoplay) {
+    tryPlay();
+  }
+
+  // Handle music errors
+  bgMusic.addEventListener("error", (e) => {
+    console.error("Music loading error:", e);
+  });
+}
+
+// ============================================
+// PHOTO GALLERY
+// ============================================
+
+let currentPhotoIndex = 0;
+
+function setupPhotoGallery() {
+  if (!config.photos?.enabled || !config.photos?.images?.length) {
+    return;
+  }
+
+  const gallery = document.getElementById("photoGallery");
+  const dotsContainer = document.getElementById("galleryDots");
+
+  // Create dots
+  config.photos.images.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.className = "gallery-dot" + (index === 0 ? " active" : "");
+    dot.onclick = () => goToPhoto(index);
+    dotsContainer.appendChild(dot);
+  });
+
+  // Show first photo
+  showPhoto(0);
+  gallery.classList.remove("hidden");
+}
+
+function showPhoto(index) {
+  const image = document.getElementById("galleryImage");
+  const caption = document.getElementById("galleryCaption");
+  const dots = document.querySelectorAll(".gallery-dot");
+
+  if (config.photos.images[index]) {
+    image.src = config.photos.folder + config.photos.images[index];
+    caption.textContent = config.photos.captions?.[index] || "";
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+
+    currentPhotoIndex = index;
+  }
+}
+
+function nextPhoto() {
+  const newIndex = (currentPhotoIndex + 1) % config.photos.images.length;
+  showPhoto(newIndex);
+}
+
+function prevPhoto() {
+  const newIndex =
+    (currentPhotoIndex - 1 + config.photos.images.length) %
+    config.photos.images.length;
+  showPhoto(newIndex);
+}
+
+function goToPhoto(index) {
+  showPhoto(index);
+}
+
+// Make functions globally available
+window.showNextQuestion = showNextQuestion;
+window.moveButton = moveButton;
+window.celebrate = celebrate;
+window.nextPhoto = nextPhoto;
+window.prevPhoto = prevPhoto;
+window.goToPhoto = goToPhoto;
