@@ -1045,3 +1045,367 @@ h2 {
 .hidden {
   display: none !important;
 }
+
+/* ============================================
+   📱 MOBILE RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .container {
+    max-width: 100%;
+    margin: 10px;
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  /* Typography - smaller screens */
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Questions */
+  .big-question {
+    font-size: 1.4rem;
+  }
+
+  .typewriter-text {
+    font-size: 1.1rem;
+  }
+
+  /* Buttons */
+  .cute-btn {
+    padding: 12px 25px;
+    margin: 8px;
+    font-size: 1rem;
+    border-radius: 40px;
+  }
+
+  .final-yes {
+    font-size: 1.2rem;
+    padding: 16px 40px;
+  }
+
+  /* Love meter */
+  .love-meter {
+    padding: 10px 0;
+  }
+
+  .love-meter p {
+    font-size: 1.1em;
+    margin: 15px 0;
+  }
+
+  #loveValue {
+    font-size: 1.3em;
+  }
+
+  .slider {
+    height: 25px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Celebration text */
+  .celebration-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .celebration-text {
+    font-size: 1em;
+    margin: 10px 0;
+  }
+
+  .celebration-emojis {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+  }
+
+  /* Gallery */
+  .gallery-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .gallery-slide img {
+    max-height: 350px;
+  }
+
+  .gallery-caption {
+    font-size: 0.95em;
+    margin-top: 10px;
+  }
+
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1em;
+  }
+
+  .gallery-controls {
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .gallery-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Love letter */
+  .love-letter {
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+
+  .love-letter::before {
+    font-size: 2rem;
+    top: -20px;
+    right: -10px;
+  }
+
+  /* Music button */
+  .music-toggle-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Secret answer button */
+  .secret-answer {
+    bottom: 10px;
+    right: 10px;
+    transform: scale(0.6);
+  }
+
+  /* Corner decorations */
+  .corner-decoration {
+    font-size: 1.2rem;
+  }
+
+  /* Photo gallery hidden on mobile initially */
+  .photo-gallery {
+    margin: 15px 0;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .container {
+    max-width: 100%;
+    margin: 5px;
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Questions */
+  .big-question {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .typewriter-text {
+    font-size: 0.95rem;
+    border-right: 2px solid var(--text-color);
+  }
+
+  /* Buttons - touch-friendly */
+  .cute-btn {
+    padding: 11px 20px;
+    margin: 6px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .final-yes {
+    font-size: 1.1rem;
+    padding: 14px 30px;
+    min-height: 48px;
+  }
+
+  .escape-btn {
+    padding: 11px 20px;
+  }
+
+  /* Love meter adjustments */
+  .slider {
+    height: 22px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--button-color);
+  }
+
+  /* Celebration */
+  .celebration-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .celebration-text {
+    font-size: 0.9em;
+    margin: 8px 0;
+    line-height: 1.4;
+  }
+
+  .celebration-emojis {
+    font-size: 1.5em;
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  /* Gallery adjustments */
+  .gallery-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .gallery-slide img {
+    max-height: 280px;
+    border-radius: 15px;
+  }
+
+  .gallery-caption {
+    font-size: 0.85em;
+    margin-top: 8px;
+  }
+
+  .gallery-nav {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 0.9em;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .gallery-controls {
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .gallery-dots {
+    gap: 6px;
+  }
+
+  .gallery-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  /* Love letter */
+  .love-letter {
+    margin-top: 15px;
+    padding: 15px;
+    font-size: 1em;
+    line-height: 1.5;
+    border-radius: 15px;
+  }
+
+  .love-letter::before {
+    font-size: 1.8rem;
+    top: -18px;
+    right: -8px;
+  }
+
+  /* Music button */
+  .music-toggle-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    top: 8px;
+    right: 8px;
+  }
+
+  /* Popup */
+  .popup-overlay {
+    padding: 10px;
+  }
+
+  .popup-content img {
+    max-width: 95vw;
+    max-height: 85vh;
+    border-radius: 15px;
+  }
+
+  /* Corner decorations - smaller on mobile */
+  .corner-decoration {
+    font-size: 1rem;
+    opacity: 0.4;
+  }
+  .top-left {
+    top: 10px;
+    left: 10px;
+  }
+  .top-right {
+    top: 10px;
+    right: 10px;
+  }
+  .bottom-left {
+    bottom: 10px;
+    left: 10px;
+  }
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  /* Reduce floating elements on mobile */
+  .heart,
+  .bear,
+  .sparkle-emoji,
+  .flower {
+    font-size: 1.3rem !important;
+  }
+
+  /* Secret answer button */
+  .secret-answer {
+    bottom: 8px;
+    right: 8px;
+    transform: scale(0.5);
+  }
+
+  /* Button group */
+  .button-group {
+    gap: 10px;
+  }
+
+  /* Love value container */
+  .love-value-container {
+    flex-direction: column;
+  }
+}
