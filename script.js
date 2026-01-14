@@ -362,6 +362,13 @@ function celebrate() {
     .querySelectorAll(".question-section")
     .forEach((q) => q.classList.add("hidden"));
 
+  // Play Yay sound
+  const yaySound = document.getElementById("yaySound");
+  if (yaySound) {
+    yaySound.currentTime = 0;
+    yaySound.play().catch(() => {});
+  }
+
   // Hide the main title for cleaner celebration look
   document.getElementById("valentineTitle").style.display = "none";
 
