@@ -611,7 +611,35 @@ h2 {
   }
 }
 
-/* Music Controls */
+/* Music Toggle Button */
+.music-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--button-color), var(--accent-color));
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(255, 107, 107, 0.4);
+}
+
+.music-toggle-btn:active {
+  transform: scale(0.95);
+}
+
 .music-controls {
   position: fixed;
   bottom: 20px;

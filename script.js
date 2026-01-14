@@ -1,7 +1,3 @@
-// ============================================
-// 💝 UPGRADED VALENTINE'S WEBSITE SCRIPT 💝
-// ============================================
-
 const config = window.VALENTINE_CONFIG;
 
 // ============================================
@@ -473,6 +469,8 @@ function setupMusicPlayer() {
   const bgMusic = document.getElementById("bgMusic");
   const musicSource = document.getElementById("musicSource");
 
+  const musicToggleBtn = document.getElementById("musicToggleBtn");
+
   if (!config.music?.enabled) {
     return;
   }
@@ -487,24 +485,48 @@ function setupMusicPlayer() {
   bgMusic.volume = config.music.volume || 0.5;
   bgMusic.load();
 
+  // Update button state
+  const updateButtonState = () => {
+    if (bgMusic.paused) {
+      musicToggleBtn.textContent = "🔇";
+    } else {
+      musicToggleBtn.textContent = "🔊";
+    }
+  };
+
+  // Music toggle button click
+  musicToggleBtn.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+    } else {
+      bgMusic.pause();
+    }
+    updateButtonState();
+  });
+
   // Try autoplay
   const tryPlay = () => {
-    bgMusic.play().catch(() => {
-      // If autoplay fails, play on first user interaction
-      document.addEventListener(
-        "click",
-        () => {
-          bgMusic.play();
-        },
-        { once: true }
-      );
-    });
+    bgMusic
+      .play()
+      .catch(() => {
+        // If autoplay fails, play on first user interaction
+        document.addEventListener(
+          "click",
+          () => {
+            bgMusic.play();
+            updateButtonState();
+          },
+          { once: true }
+        );
+      })
+      .then(() => updateButtonState());
   };
 
   if (config.music.autoplay) {
     tryPlay();
   }
 
+  updateButtonState();
   // Handle music errors
   bgMusic.addEventListener("error", (e) => {
     console.error("Music loading error:", e);
