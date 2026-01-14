@@ -77,6 +77,13 @@ function initializeContent() {
     heartbeatSound.currentTime = 0;
     heartbeatSound.play().catch(() => {});
   });
+
+  // Hide secret answer button when clicked
+  const secretAnswerBtn = document.getElementById("secretAnswerBtn");
+  secretAnswerBtn.addEventListener("click", () => {
+    const secretAnswerDiv = document.querySelector(".secret-answer");
+    secretAnswerDiv.classList.add("hidden");
+  });
 }
 
 // ============================================
