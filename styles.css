@@ -35,13 +35,13 @@ body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   position: relative;
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><text x="0" y="42" font-size="48">❤️</text></svg>')
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 100"><text x="-15" y="85" font-size="90">❤️</text></svg>')
       0 0,
     auto;
 }
 
 * {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><text x="0" y="42" font-size="48">❤️</text></svg>')
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 100"><text x="-15" y="85" font-size="90">❤️</text></svg>')
       0 0,
     auto;
 }

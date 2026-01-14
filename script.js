@@ -366,6 +366,7 @@ function celebrate() {
   const yaySound = document.getElementById("yaySound");
   if (yaySound) {
     yaySound.currentTime = 0;
+    yaySound.playbackRate = 2;
     yaySound.play().catch(() => {});
   }
 
