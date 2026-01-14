@@ -59,16 +59,16 @@ const CONFIG = {
 
   // Love meter messages
   loveMessages: {
-    extreme: "WOOOOW You love me that much?? 🥰🚀💝",
+    extreme: "WOOOOW You love me that much?? 🥰💝",
     high: "To infinity and beyond! 🚀💝",
     normal: "And beyond! 🥰",
   },
 
   // Messages that appear after they say "Yes!"
   celebration: {
-    title: "Yay! I'm the luckiest guy in the world! 🎉💝",
-    message: "Now come get your gift, a big warm hug and a huge kiss!",
-    emojis: "🎁💖🤗💝🎀❤️💕",
+    title: "Yay! I'm the luckiest man in the world! ",
+    message: "Now come get and give daddy a big kiss😉",
+    emojis: "💖💝🎀❤️💕",
     // ✨ NEW: Personal love letter that types out
     loveLetter:
       "Every moment with you is a gift. You make my heart skip a beat, my soul sing, and my world complete. I love you more than words could ever express... 💕",

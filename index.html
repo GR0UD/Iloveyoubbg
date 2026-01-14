@@ -122,16 +122,18 @@
 
         <!-- Photo Gallery - Our Memories -->
         <div class="photo-gallery hidden" id="photoGallery">
-          <h3 class="gallery-title">Our Memories Together 💕</h3>
+          <h3 class="gallery-title">Our Memories Together</h3>
           <div class="gallery-container">
-            <button class="gallery-nav prev" onclick="prevPhoto()">❮</button>
             <div class="gallery-slide">
               <img id="galleryImage" src="" alt="Our Memory" />
               <p class="gallery-caption" id="galleryCaption"></p>
             </div>
+          </div>
+          <div class="gallery-controls">
+            <button class="gallery-nav prev" onclick="prevPhoto()">❮</button>
+            <div class="gallery-dots" id="galleryDots"></div>
             <button class="gallery-nav next" onclick="nextPhoto()">❯</button>
           </div>
-          <div class="gallery-dots" id="galleryDots"></div>
         </div>
 
         <div class="love-letter" id="loveLetter"></div>
@@ -148,6 +150,9 @@
 
     <!-- Slap Sound -->
     <audio id="slapSound" src="music/slap.mp3"></audio>
+
+    <!-- Heartbeat Sound -->
+    <audio id="heartbeatSound" src="music/heaartbeat.mp3"></audio>
 
     <!-- Scripts -->
     <script src="config.js"></script>

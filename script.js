@@ -73,6 +73,14 @@ function initializeContent() {
   document.getElementById("yesBtn3").textContent =
     config.questions.third.yesBtn;
   document.getElementById("noBtn3").textContent = config.questions.third.noBtn;
+
+  // Add heartbeat sound on yes button hover
+  const yesBtn3 = document.getElementById("yesBtn3");
+  const heartbeatSound = document.getElementById("heartbeatSound");
+  yesBtn3.addEventListener("mouseenter", () => {
+    heartbeatSound.currentTime = 0;
+    heartbeatSound.play().catch(() => {});
+  });
 }
 
 // ============================================
@@ -350,6 +358,10 @@ function celebrate() {
   document
     .querySelectorAll(".question-section")
     .forEach((q) => q.classList.add("hidden"));
+
+  // Hide the main title for cleaner celebration look
+  document.getElementById("valentineTitle").style.display = "none";
+
   const celebration = document.getElementById("celebration");
   celebration.classList.remove("hidden");
 
